@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.mybatis.dao.dayima_dao">
+
+	<resultMap type="com.atguigu.mybatis.bean.dayima" id="ff">
+		<id column="id" property="id" />
+		<result column="d_dayimadate" property="date" />
+		<collection property="dymlx"
+			select="com.atguigu.mybatis.dao.dayimaleixing.select" ofType="dayimaleixing"
+			column="{id=id}">
+			<id column="y_id" property="id" />
+			<result column="y_leixing" property="leixing" />
+		</collection>
+	</resultMap>
+	<select id="selectall" resultMap="ff">
+		<trim prefix="select *from DAYIMADATE">
+			<if test="id!=null">
+				<where>
+					id=#{id}
+				</where>
+			</if>
+		</trim>
+	</select>
+</mapper>
