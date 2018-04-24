@@ -1,5 +1,5 @@
 package com.zcj.bean;
 
-public class kj {
+public class df {
 
 }
